@@ -38,3 +38,20 @@
   align-items: center; /* Vertically center the text */
   justify-content: center;
 }
+
+.board .keyboard {
+  display: grid;
+  grid-template-columns: repeat(7,10fr);
+  gap: 10px
+}
+
+.letter {
+  width: 100px;
+  height: 100px;
+  border: 3px solid #eee;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size:50px;
+}

@@ -44,10 +44,34 @@ const Field = ({ children }) => {
     )
 }
 
+const Letter = ({letter, isPicked, pickLetter}) => {
+    const handleClick = () => {
+        pickLetter(letter);
+    }
+    const className = `letter ${ isPicked ? 'is-picked' :  ''}`
+    return (
+        <div
+            className={className}
+            onClick={handleClick}
+        >
+            {letter}
+        </div>
+    )
+}
+
 function App() {
     const [word, setWord] =  useState(WORDS[Math.floor(Math.random() * WORDS.length)])
     const [keyword, setKeyword] = useState({...VIRGIN_KEYWORD})
-
+    const pickLetter = (letter) => {
+        let newKeyboard = {...keyword};
+        newKeyboard[letter] =  true;
+        if(!word.includes(letter)) {
+            for (const [key, value] of Object.entries(newKeyboard)) {
+                newKeyboard[key] = true;
+            }
+        }
+        setKeyword(newKeyboard)
+    }
     return (
         <>
             <main className="board">
@@ -58,6 +82,19 @@ function App() {
                                 <Field key={i}>
                                     { (keyword[l] ? l: '') }
                                 </Field>
+                            )
+                        })
+                    }
+                </section>
+                <section className="keyboard">
+                    {
+                        Object.entries(keyword).map(([key, value]) => {
+                            return (
+                                <Letter
+                                    letter={key}
+                                    isPicked={value}
+                                    pickLetter={pickLetter}
+                                />
                             )
                         })
                     }
