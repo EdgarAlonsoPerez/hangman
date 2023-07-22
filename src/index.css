@@ -55,3 +55,9 @@
   cursor: pointer;
   font-size:50px;
 }
+.letter.is-picked {
+  color: #fff;
+  background: #09f;
+  opacity: 0.6; /* Reducing opacity to make it appear disabled */
+  pointer-events: none; /* Disabling pointer events */
+}
