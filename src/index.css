@@ -55,9 +55,22 @@
   cursor: pointer;
   font-size:50px;
 }
+
 .letter.is-picked {
   color: #fff;
   background: #09f;
   opacity: 0.6; /* Reducing opacity to make it appear disabled */
   pointer-events: none; /* Disabling pointer events */
+}
+
+.board button {
+  padding: 8px 12px;
+  margin: 25px;
+  background: transparent;
+  border: 2px solid #eeeeee;color: #eee;
+  width: 100px;
+  border-radius: 5px;
+  transition: 0.2s;
+  font-weight: bold;
+  cursor: pointer;
 }
