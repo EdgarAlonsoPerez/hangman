@@ -1,35 +1,70 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+const WORDS  = [
+    "DOG",
+    "TURTLE",
+    "CAT",
+    "RAVEN",
+    "FISH"
+]
+const VIRGIN_KEYWORD= {
+    A:null,
+    B:null,
+    C:null,
+    D:null,
+    E:null,
+    F:null,
+    G:null,
+    H:null,
+    I:null,
+    J:null,
+    K:null,
+    L:null,
+    M:null,
+    N:null,
+    O:null,
+    P:null,
+    Q:null,
+    R:null,
+    S:null,
+    T:null,
+    U:null,
+    V:null,
+    W:null,
+    X:null,
+    Y:null,
+    Z:null
+}
+const Field = ({ children }) => {
+    return (
+        <div className="field">
+            {children}
+        </div>
+    )
+}
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+function App() {
+    const [word, setWord] =  useState(WORDS[Math.floor(Math.random() * WORDS.length)])
+    const [keyword, setKeyword] = useState({...VIRGIN_KEYWORD})
+
+    return (
+        <>
+            <main className="board">
+                <section className="word">
+                    {
+                        word.split('').map( (l,i) => {
+                            return (
+                                <Field key={i}>
+                                    { (keyword[l] ? l: '') }
+                                </Field>
+                            )
+                        })
+                    }
+                </section>
+            </main>
+        </>
+    )
 }
 
 export default App
